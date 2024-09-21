@@ -2,7 +2,6 @@
 " By filipwe
 " Last updated 2023-07-08
 
-
 " Settings from Vundle (plugin manager)
 set nocompatible              " be iMproved, required
 filetype off                  " required
@@ -13,10 +12,9 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'rking/ag.vim'
+Plugin 'junegunn/fzf'
+Plugin 'junegunn/fzf.vim'
 
-" List of plugins
-"Plugin 'tpope/vim-fugitive'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -57,7 +55,7 @@ augroup asm6502
 augroup END
 
 " Optimizing searches in repos.
-set wildignore=./*,*/.git/*,*/*venv*/*,*/__pycache__/*,*/temp_test/*
+set wildignore=*/.git/*,*/*venv*/*,*/__pycache__/*,*/temp_test/*
 
 " Set netwr to be sticky to the left.
 let g:netrw_altv=1
@@ -72,8 +70,13 @@ else
     let background = $BACKGROUND
 endif
 
-let g:airline_theme=background
 let &background=background
+" let g:airline_theme='zenburn'
+let g:airline_theme='base16_gruvbox_dark_soft'
 
 " Allow swtiching pane (to Tmux) from Netrw with <C-l>
 nmap <leader><leader><leader><leader><leader><leader>l <Plug>NetrwRefresh
+
+" Testing search dirs
+set path+=**
+
