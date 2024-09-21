@@ -1,0 +1,30 @@
+import = ["/home/filip/.config/alacritty/themes/themes/filipwe.toml"]
+
+[font]
+size = 11
+
+[font.bold]
+family = "Roboto Mono for Powerline"
+
+[font.bold_italic]
+family = "Roboto Mono Light for Powerline"
+style = "Bold Italic"
+
+[font.italic]
+family = "Roboto Mono Light for Powerline"
+style = "Italic"
+
+[font.normal]
+family = "Roboto Mono Light for Powerline"
+
+[[hints.enabled]]
+command = "firefox"
+post_processing = true
+regex = "(mailto:|gemini:|gopher:|https:|http:|news:|file:|git:|ssh:|ftp:)[^\u0000-\u001F\u007F-<>\" {-}\\^⟨⟩`]+"
+
+[hints.enabled.mouse]
+enabled = true
+mods = "Control"
+
+[window]
+decorations_theme_variant = "Dark"
