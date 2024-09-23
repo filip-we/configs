@@ -1,7 +1,12 @@
-import = ["/home/filip/.config/alacritty/themes/themes/filipwe.toml"]
+import = [
+  "/home/filip/.config/alacritty/themes/themes/filipwe.toml",
+  "/Users/filip.wettlen1/.config/alacritty/themes/themes/filipwe.toml",
+]
+
+live_config_reload = true
 
 [font]
-size = 11
+size = 12 # 16 on Mac
 
 [font.bold]
 family = "Roboto Mono for Powerline"
@@ -27,4 +32,10 @@ enabled = true
 mods = "Control"
 
 [window]
+# startup_mode = "Fullscreen" # On Mac
 decorations_theme_variant = "Dark"
+
+[bell]
+duration = 300
+animation = "EaseOutCirc"
+color = "#bfbfbf"
