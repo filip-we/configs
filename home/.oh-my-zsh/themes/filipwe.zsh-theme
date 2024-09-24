@@ -1,11 +1,12 @@
+# An highly informative and adaptive prompt that displays all you need on one line.
 # NOTE: This prompt uses the plugins git-promt and virtualenv.
-# Highly informative Git-info on the first line of your prompt.
 
 local clock='%{$fg[green]%}%*%{$reset_color%}'
 local usr_and_host='%{$fg[cyan]%}%n%{$reset_color%}@%{$fg[yellow]%}%m%{$reset_color%}'
 local current_dir='%{$fg[blue]%}%~%{$reset_color%}'
 local git_branch='%{$(git_super_status)%}%{$reset_color%}'
-local error_msg='%(?,,|%{$fg[red]%} ⚠ $?%{$reset_color%})'
+local error_msg='%(?,, |%{$fg[red]%} ⚠ $?%{$reset_color%})'
+local venv_prompt='%{$fg[magenta]%}$(virtualenv_prompt_info)%{$reset_color%}'
 
 ZSH_THEME_GIT_PROMPT_PREFIX=" | "
 ZSH_THEME_GIT_PROMPT_SUFFIX=""
@@ -23,6 +24,9 @@ ZSH_THEME_GIT_PROMPT_DIRTY=" %{$fg[red]%}⚫︎%G"
 ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[green]%}%{⚫︎%G%}"
 ZSH_THEME_GIT_PROMPT_UPSTREAM_SEPARATOR="->"
 
+ZSH_THEME_VIRTUALENV_PREFIX="%{$reset_color%} | %{$fg[magenta]%}("
+ZSH_THEME_VIRTUALENV_SUFFIX=")"
+
 RPROMPT=""
-PROMPT="${clock} | ${usr_and_host} | ${current_dir} ${git_branch} ${error_msg}
-%{$fg[magenta]%}$(virtualenv_prompt_info)%{$reset_color%}%{$fg[green]%}>%{$reset_color%}"
+PROMPT="${clock} | ${usr_and_host} | ${current_dir}${git_branch}${venv_prompt}${error_msg}
+%{$fg[green]%}>%{$reset_color%}"
