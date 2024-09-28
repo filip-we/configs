@@ -25,8 +25,8 @@ source ~/.zshenv
 
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.zsh_history
-HISTSIZE=1000
-SAVEHIST=1000
+HISTSIZE=10000
+SAVEHIST=10000
 setopt beep extendedglob nomatch notify
 bindkey -v
 # End of lines configured by zsh-newuser-install
@@ -46,9 +46,6 @@ compinit
 HIST_STAMPS="H:M:S"
 
 COMPLETION_WAITING_DOTS="true"
-
-# Load env-vars
-export $(envsubst < ~/.my_envs)
 
 # Created by `pipx` on 2024-02-12 21:01:23
 export PATH="$PATH:/home/filip/.local/bin"
