@@ -14,6 +14,9 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
+" Work-related
+" Plugin 'hashivim/vim-terraform'
+" Plugin 'github/copilot.vim'
 
 
 " All of your Plugins must be added before the following line
