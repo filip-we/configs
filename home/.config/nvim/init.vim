@@ -14,10 +14,13 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
-" Work-related
-" Plugin 'hashivim/vim-terraform'
-" Plugin 'github/copilot.vim'
 
+if system('uname') == 'Darwin'
+    Plugin 'hashivim/vim-terraform'
+    Plugin 'github/copilot.vim'
+    Plugin 'nvim-lua/plenary.nvim'
+    Plugin 'CopilotC-Nvim/CopilotChat.nvim'
+endif
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -74,8 +77,11 @@ else
 endif
 
 let &background=background
-" let g:airline_theme='zenburn'
-let g:airline_theme='base16_gruvbox_dark_soft'
+if &background == "light"
+    let g:airline_theme='light'
+else
+    let g:airline_theme='base16_gruvbox_dark_soft'
+endif
 
 " Allow swtiching pane (to Tmux) from Netrw with <C-l>
 nmap <leader><leader><leader><leader><leader><leader>l <Plug>NetrwRefresh
@@ -83,3 +89,10 @@ nmap <leader><leader><leader><leader><leader><leader>l <Plug>NetrwRefresh
 " Testing search dirs
 set path+=**
 
+if system('uname') == 'Darwin'
+lua << EOF
+require("CopilotChat").setup {
+-- See Configuration section for options
+}
+EOF
+endif
