@@ -1,6 +1,6 @@
 " VIM-rc-file primarily for Unix-like OS:es
 " By filipwe
-" Last updated 2023-07-08
+let operating_system=system('uname')
 
 " Settings from Vundle (plugin manager)
 set nocompatible              " be iMproved, required
@@ -15,7 +15,8 @@ Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
 
-if system('uname') == 'Darwin'
+if operating_system == "Darwin\n"
+    echo "We are on Mac"
     Plugin 'hashivim/vim-terraform'
     Plugin 'github/copilot.vim'
     Plugin 'nvim-lua/plenary.nvim'
