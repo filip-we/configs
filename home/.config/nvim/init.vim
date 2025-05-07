@@ -90,7 +90,7 @@ nmap <leader><leader><leader><leader><leader><leader>l <Plug>NetrwRefresh
 " Testing search dirs
 set path+=**
 
-if system('uname') == 'Darwin'
+if operating_system == "Darwin\n"
 lua << EOF
 require("CopilotChat").setup {
 -- See Configuration section for options
