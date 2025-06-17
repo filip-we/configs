@@ -1,0 +1,14 @@
+[pull]
+    rebase = true
+[help]
+    autocorrect = 8
+[alias]
+    hist = log --oneline --graph --decorate --all
+    head = rev-parse HEAD
+    cphead = rev-parse HEAD | pbcopy
+    c = commit -S
+    aned = commit --amend --no-edit -S
+    swi = !git switch \"$(git branch | sed 's/\\*//g' | sed 's/\\ \\ *//g' | fzf --print0 --tmux)\"
+[core]
+    page = less -F -X
+    editor = nvim
