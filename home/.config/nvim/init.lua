@@ -1,30 +1,44 @@
 require("config.lazy")
 
+local operating_system = vim.fn.system("uname")
+
+if operating_system:match("Darwin") then
+  require("CopilotChat").setup {}
+end
+
+require("oil").setup({
+   columns = {
+    "size",
+    "mtime",
+  },
+  view_options = {
+    show_hidden = true,
+  }
+})
+
+
 vim.cmd([[
 " Common settings
 set noswapfile
 
-" Sets indents to four spaces, as well as converting tabs to 4 spaces
 set smartindent
+set smarttab
+
 set shiftwidth=4
 set expandtab
 set tabstop=4
-
-" Consistent indents in new lines
-set smarttab
 
 " Displays '-' for trailing space, '>-' for tabs and '_' for non breakable space
 set listchars=tab:>-,trail:-,nbsp:_
 set list
 
-set guifont=Lucida\ Console:h10
-set ruler
+" Not used in nvim
+"set guifont=Lucida\ Console:h10
 
 " Colors and colorscheme
 set t_Co=256
 syntax on
 set hlsearch
-"colorscheme filipwe
 
 " Syntax for asm6502
 augroup asm6502
@@ -33,10 +47,7 @@ augroup asm6502
 augroup END
 
 " Optimizing searches in repos.
-set wildignore=*/.git/*,*/*venv*/*,*/__pycache__/*,*/temp_test/*
-
-" Set netwr to be sticky to the left.
-" let g:netrw_altv=1
+set wildignore=*/.git/*,*/*venv*/*,*/__pycache__/*
 
 " Allow setting dark/light theme from environment variable
 if empty($BACKGROUND)
@@ -83,12 +94,7 @@ nmap <leader><leader><leader><leader><leader><leader>l <Plug>NetrwRefresh
 " Testing search dirs
 set path+=**
 
+" Set this last so that vim-airline colors work correctly
 colorscheme filipwe
 
 ]])
-
-local operating_system = vim.fn.system("uname")
-
-if operating_system:match("Darwin") then
-  require("CopilotChat").setup {}
-end
