@@ -231,3 +231,6 @@ exec --no-startup-id i3-msg 'workspace 1; exec firefox; workspace 1'
 
 # Set device properties
 exec xinput set-prop "Wings Tech Xtrfy M4" 'libinput Accel Speed' -0.99
+
+# Set my keyboard layouts witin i3
+exec "setxkbmap -layout us,us,se -variant intl,, -option grp:win_space_toggle"
