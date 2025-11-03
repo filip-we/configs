@@ -63,6 +63,9 @@ else
     let g:airline_theme='base16_gruvbox_dark_soft'
 endif
 
+" Remapped keys
+tnoremap <Esc> <C-\><C-n>
+
 " Allow vim-airline to find correct fonts
 let g:airline_powerline_fonts = 1
 
