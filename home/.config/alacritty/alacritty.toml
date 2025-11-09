@@ -1,8 +1,7 @@
 [general]
 import = [
-  "/home/filip/.config/alacritty/themes/themes/filipwe.toml",
-  "/Users/filip.wettlen1/.config/alacritty/themes/themes/filipwe.toml",
   "/home/filip/.config/alacritty/themes/themes/gruvbox_dark.toml",
+  "/home/filip/.config/alacritty/themes/themes/filipwe-light.toml",
 ]
 
 live_config_reload = true
