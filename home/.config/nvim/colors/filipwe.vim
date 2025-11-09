@@ -33,8 +33,8 @@ let palette = {
     \   'string':           'guifg=#278001 ctermfg=34',
     \   'number':           'guifg=#921fbf ctermfg=92',
     \
-    \   'py-key-words' :    'guifg=#d63c44 ctermfg=32',
-    \   'fn-names' :        'guifg=#5f80e3 ctermfg=160',
+    \   'py-key-words' :    'guifg=#d63c44 ctermfg=160',
+    \   'fn-names' :        'guifg=#5f80e3 ctermfg=32',
     \   'decorator' :       'guifg=#ff8000 ctermfg=208',
     \
     \   'special-chars':    'guifg=#f558be ctermfg=165',
@@ -175,4 +175,3 @@ exec 'hi Include        '.palette['import']
     ""Import
     "highlight Include                     guifg=#ff8000             ctermfg=208
     "highlight Number                      guifg=#921fbf             ctermfg=92      " 92: dark violet
-
