@@ -237,7 +237,7 @@ gaps outer 10
 default_border pixel 4
 
 # Automatically open programs at startup, keep focus at workspace 1
-exec --no-startup-id i3-msg 'workspace 9; exec pavucontrol; workspace 1'
+exec --no-startup-id i3-msg 'workspace 9; exec qpwgraph; workspace 1'
 exec --no-startup-id i3-msg 'workspace 1; exec firefox; workspace 1'
 
 # Set device properties
