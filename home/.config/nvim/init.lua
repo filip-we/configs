@@ -110,29 +110,23 @@ set path+=**
 
 " Remap if we use Colemak
 if keyboard_layout=='colemak'
-    " Cursor movement
-    noremap n h|xnoremap n h|onoremap n h
-    noremap e j|xnoremap e j|onoremap e j
-    noremap i k|xnoremap i k|onoremap i k
-    noremap o l|xnoremap o l|onoremap o l
-
-    " Move other stuff
     noremap h e
     noremap j o
     noremap k n
     noremap l i
+    noremap H E
+    noremap J O
+    noremap K N
+    noremap L I
 
-    " Text objects
-    onoremap l i
-    vnoremap l i
-
-    " Insert
-    nnoremap l i
-    nnoremap L I
-
-    " Search
-    nnoremap k n|xnoremap k n|onoremap k n
-    nnoremap K N|xnoremap K N|onoremap K N
+    noremap n h
+    noremap e j
+    noremap i k
+    noremap o l
+    noremap N H
+    noremap E J
+    noremap I K
+    noremap O L
 
     " Window navigation
     nnoremap <C-w>n <C-w>h|xnoremap <C-w>n <C-w>h
