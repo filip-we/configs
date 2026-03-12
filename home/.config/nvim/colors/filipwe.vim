@@ -23,7 +23,7 @@ let palette = {
     \   'search':           'guifg=#ffffff ctermfg=255 guibg=#999999 ctermbg=244',
     \   'tab':              'guifg=#000000 ctermfg=0   guibg=#999999 ctermbg=244 term=None cterm=None',
     \   'tab-sel':          'guifg=#000000 ctermfg=0                             term=None cterm=None',
-    \   'tab-nc':           'guifg=#000000 ctermfg=0   guibg=#a8a8a8 ctermbg=248',
+    \   'tab-nc':           'guifg=#999999 ctermfg=244',
     \
     \   'todo':             'guifg=#eeeeee ctermfg=255 guibg=#278001 ctermbg=34',
     \   'non-text':         'guifg=#0000d7 ctermfg=20',
@@ -91,7 +91,7 @@ exec 'hi Search         '.palette['search']
 exec 'hi Visual         '.palette['gui-bg-1']
 exec 'hi StatusLine     '.palette['status-line']
 exec 'hi StatusLineNC   '.palette['status-line-nc']
-exec 'hi VertSplit      '.palette['status-line']
+exec 'hi VertSplit      '.palette['tab-sel']
 exec 'hi LineNr         '.palette['gui-fg-1']
 exec 'hi MatchParen     '.palette['gui-bg-1']
 
