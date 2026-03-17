@@ -16,6 +16,13 @@ require("oil").setup({
   }
 })
 
+-- Make ag search hidden folders
+vim.env.FZF_DEFAULT_COMMAND = 'ag -u --hidden --ignore .git -g ""'
+vim.cmd([[
+  command! -bang -nargs=* Ag
+    \ call fzf#vim#ag(<q-args>, '-u --hidden --ignore .git', fzf#vim#with_preview(), <bang>0)
+]])
+
 
 vim.cmd([[
 " Common settings
