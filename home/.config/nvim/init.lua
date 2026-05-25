@@ -13,7 +13,30 @@ require("oil").setup({
   },
   view_options = {
     show_hidden = true,
-  }
+  },
+  keymaps = {
+    ['<C-s>'] = {
+      'actions.select',
+      opts = {
+        vertical = true,
+        split = 'belowright',
+      },
+    },
+    ['<C-h>'] = {
+      'actions.select',
+      opts = {
+        horizontal = true,
+        split = 'belowright',
+      },
+    },
+    ['<C-p>'] = {
+      'actions.preview',
+      opts = {
+        vertical = true,
+        split = 'belowright',
+      },
+    },
+  },
 })
 
 -- Make ag search hidden folders
