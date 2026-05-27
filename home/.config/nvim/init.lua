@@ -163,10 +163,30 @@ if keyboard_layout=='colemak'
     nnoremap <C-w>e <C-w>j|xnoremap <C-w>e <C-w>j
     nnoremap <C-w>i <C-w>k|xnoremap <C-w>i <C-w>k
     nnoremap <C-w>o <C-w>l|xnoremap <C-w>o <C-w>l
-    nnoremap <C-w>N <C-w>H|xnoremap <C-w>n <C-w>h
-    nnoremap <C-w>E <C-w>J|xnoremap <C-w>e <C-w>j
-    nnoremap <C-w>I <C-w>K|xnoremap <C-w>i <C-w>k
-    nnoremap <C-w>O <C-w>L|xnoremap <C-w>o <C-w>l
+    nnoremap <C-w>N <C-w>H|xnoremap <C-w>N <C-w>H
+    nnoremap <C-w>E <C-w>J|xnoremap <C-w>E <C-w>J
+    nnoremap <C-w>I <C-w>K|xnoremap <C-w>I <C-w>K
+    nnoremap <C-w>O <C-w>L|xnoremap <C-w>O <C-w>L
+
+    " Ensure the 'close all panes but this one with Ctrl+o gets triggered
+    nnoremap <C-w><C-n> <C-w>h|xnoremap <C-w><C-n> <C-w>h
+    nnoremap <C-w><C-e> <C-w>j|xnoremap <C-w><C-e> <C-w>j
+    nnoremap <C-w><C-i> <C-w>k|xnoremap <C-w><C-i> <C-w>k
+    nnoremap <C-w><C-o> <C-w>l|xnoremap <C-w><C-o> <C-w>l
+
+    " Keep cursor; scroll one line
+    nnoremap <C-u> <C-e>
+    " <C-y> is same
+
+    " Keep cursor; scroll half screen
+    nnoremap <C-e> <C-d>
+    nnoremap <C-i> <C-u>
+
+    " Jumping in locations and files
+    nnoremap <C-b> <C-o>
+    nnoremap <C-k> <C-i>
+    nnoremap <C-o> <Nop>
+    nnoremap <C-O> <Nop>
 
 endif
 
