@@ -1,4 +1,4 @@
-export EDITOR="vim"
+export EDITOR="nvim"
 export DEFAULT_USER="filip"
 
 # My custom method to tell configs wether to use dark or light themes
@@ -12,3 +12,4 @@ export ZSH_THEME="filipwe"
 # export ZSH="$HOME/.config/zsh/ohmyzsh"
 export ZSH="$HOME/.oh-my-zsh"
 
+PATH=$PATH:~/bin
