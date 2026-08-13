@@ -9,7 +9,7 @@
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
-set $mod Mod1
+set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -237,11 +237,5 @@ gaps outer 10
 default_border pixel 4
 
 # Automatically open programs at startup, keep focus at workspace 1
-exec --no-startup-id i3-msg 'workspace 9; exec qpwgraph; workspace 1'
 exec --no-startup-id i3-msg 'workspace 1; exec firefox; workspace 1'
-
-# Set device properties
-exec xinput set-prop "Wings Tech Xtrfy M4" 'libinput Accel Speed' -0.99
-
-# Set my keyboard layouts witin i3
-exec "setxkbmap -layout us,se -variant ,, -option grp:win_space_toggle"
+exec --no-startup-id i3-msg 'workspace 9; exec pavucontrol; workspace 1'
