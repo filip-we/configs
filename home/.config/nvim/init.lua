@@ -45,6 +45,9 @@ vim.cmd([[
   command! -bang -nargs=* Ag
     \ call fzf#vim#ag(<q-args>, '-u --hidden --ignore .git', fzf#vim#with_preview(), <bang>0)
 ]])
+vim.keymap.set('n', '<leader>ag', function()
+  vim.cmd('Ag ' .. vim.fn.expand('<cword>'))
+end, { desc = 'Ag search word under cursor' })
 
 
 vim.cmd([[
@@ -175,12 +178,12 @@ if keyboard_layout=='colemak'
     nnoremap <C-w><C-o> <C-w>l|xnoremap <C-w><C-o> <C-w>l
 
     " Keep cursor; scroll one line
-    nnoremap <C-u> <C-e>
-    " <C-y> is same
+    nnoremap <C-u> <C-d>
+    nnoremap <C-y> <C-u>
 
     " Keep cursor; scroll half screen
-    nnoremap <C-e> <C-d>
-    nnoremap <C-i> <C-u>
+    nnoremap <C-e> <C-e>
+    nnoremap <C-i> <C-y>
 
     " Jumping in locations and files
     nnoremap <C-b> <C-o>
