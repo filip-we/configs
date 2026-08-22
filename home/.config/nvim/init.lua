@@ -49,18 +49,7 @@ vim.keymap.set('n', '<leader>ag', function()
   vim.cmd('Ag ' .. vim.fn.expand('<cword>'))
 end, { desc = 'Ag search word under cursor' })
 
-
 vim.cmd([[
-" Common settings
-set noswapfile
-
-set smartindent
-set smarttab
-
-set shiftwidth=4
-set expandtab
-set tabstop=4
-
 " Displays '-' for trailing space, '>-' for tabs and '_' for non breakable space
 set listchars=tab:>-,trail:-,nbsp:_
 set list
@@ -103,13 +92,6 @@ else
     let keyboard_layout = $KEYBOARD_LAYOUT
 endif
 
-" Remapped keys
-" Escape built-in termial easier
-tnoremap <Esc> <C-\><C-n>
-
-" Disable spawning empty buffer
-nnoremap <C-w><C-n> <nop>|xnoremap <C-w><C-n> <nop>
-
 " Allow vim-airline to find correct fonts
 let g:airline_powerline_fonts = 1
 
@@ -135,65 +117,109 @@ let g:airline_symbols.branch = ''
 let g:airline_symbols.readonly = ''
 let g:airline_symbols.linenr = ''
 
-" Allow swtiching pane (to Tmux) from Netrw with <C-l>
-nmap <leader><leader><leader><leader><leader><leader>l <Plug>NetrwRefresh
-
 " Testing search dirs
 set path+=**
-
-" Remap if we use Colemak
-if keyboard_layout=='colemak'
-    noremap h e
-    noremap j o
-    noremap k n
-    noremap l i
-    noremap H E
-    noremap J O
-    noremap K N
-    noremap L I
-
-    noremap n h
-    noremap e j
-    noremap i k
-    noremap o l
-    noremap N H
-    noremap E J
-    noremap I K
-    noremap O L
-
-    " Window navigation
-    nnoremap <C-w>n <C-w>h|xnoremap <C-w>n <C-w>h
-    nnoremap <C-w>e <C-w>j|xnoremap <C-w>e <C-w>j
-    nnoremap <C-w>i <C-w>k|xnoremap <C-w>i <C-w>k
-    nnoremap <C-w>o <C-w>l|xnoremap <C-w>o <C-w>l
-    nnoremap <C-w>N <C-w>H|xnoremap <C-w>N <C-w>H
-    nnoremap <C-w>E <C-w>J|xnoremap <C-w>E <C-w>J
-    nnoremap <C-w>I <C-w>K|xnoremap <C-w>I <C-w>K
-    nnoremap <C-w>O <C-w>L|xnoremap <C-w>O <C-w>L
-
-    " Ensure the 'close all panes but this one with Ctrl+o gets triggered
-    nnoremap <C-w><C-n> <C-w>h|xnoremap <C-w><C-n> <C-w>h
-    nnoremap <C-w><C-e> <C-w>j|xnoremap <C-w><C-e> <C-w>j
-    nnoremap <C-w><C-i> <C-w>k|xnoremap <C-w><C-i> <C-w>k
-    nnoremap <C-w><C-o> <C-w>l|xnoremap <C-w><C-o> <C-w>l
-
-    " Keep cursor; scroll one line
-    nnoremap <C-u> <C-d>
-    nnoremap <C-y> <C-u>
-
-    " Keep cursor; scroll half screen
-    nnoremap <C-e> <C-e>
-    nnoremap <C-i> <C-y>
-
-    " Jumping in locations and files
-    nnoremap <C-b> <C-o>
-    nnoremap <C-k> <C-i>
-    nnoremap <C-o> <Nop>
-    nnoremap <C-O> <Nop>
-
-endif
-
 " Set this last so that vim-airline colors work correctly
 colorscheme filipwe
 
 ]])
+
+-- General settings
+vim.opt.swapfile = false
+
+-- Enable relative line numbers (with current line number on cursor line)
+vim.opt.number = true
+vim.opt.relativenumber = true
+
+vim.opt.scrolloff = 8
+vim.opt.colorcolumn = "80"
+
+vim.opt.smarttab = true
+vim.opt.shiftwidth = 4
+vim.opt.expandtab = true
+vim.opt.tabstop = 4
+
+
+-- ------------------------ --
+-- Remapped keys
+-- ------------------------ --
+local no_yank_modes = {'n', 'v'}
+
+-- Escape built-in terminal easier
+vim.keymap.set('t', '<Esc>', '<C-\\><C-n>')
+
+-- Disable spawning empty buffer
+vim.keymap.set({ 'n', 'x' }, '<C-w><C-n>', '<nop>')
+
+-- Delete (motion or visual) to black hole
+vim.keymap.set(no_yank_modes, '<leader>d', '"_d', { desc = 'Delete without yanking' })
+vim.keymap.set(no_yank_modes, '<leader>D', '"_D', { desc = 'Delete line to end without yanking' })
+
+-- Change (motion or visual) to black hole (preserves register when editing)
+vim.keymap.set(no_yank_modes, '<leader>c', '"_c', { desc = 'Change without yanking' })
+vim.keymap.set(no_yank_modes, '<leader>C', '"_C', { desc = 'Change line to end without yanking' })
+
+-- Easy system clipboard
+vim.keymap.set(no_yank_modes, '<leader>p', '"+p', { desc = 'Paste from system clipboard' })
+vim.keymap.set(no_yank_modes, '<leader>P', '"+P', { desc = 'Paste from system clipboard' })
+vim.keymap.set(no_yank_modes, '<leader>y', '"+y', { desc = 'Yank directly to system clipboard' })
+vim.keymap.set(no_yank_modes, '<leader>Y', '"+Y', { desc = 'Yank directly to system clipboard' })
+
+local keyboard_layout = vim.env.KEYBOARD_LAYOUT
+if not keyboard_layout or keyboard_layout == "" then
+  keyboard_layout = "qwerty"
+end
+
+if keyboard_layout == 'colemak' then
+    -- Window navigation (Colemak: n/e/i/o -> h/j/k/l)
+    local modes = { 'n', 'x' }
+    local all_modes = {'n', 'v', 'o'}
+
+    vim.keymap.set(all_modes, 'h', 'e', { remap = false, silent = true })
+    vim.keymap.set(all_modes, 'j', 'o', { remap = false, silent = true })
+    vim.keymap.set(all_modes, 'k', 'nzz', { remap = false, silent = true })
+    vim.keymap.set(all_modes, 'l', 'i', { remap = false, silent = true })
+    vim.keymap.set(all_modes, 'H', 'E', { remap = false, silent = true })
+    vim.keymap.set(all_modes, 'J', 'O', { remap = false, silent = true })
+    vim.keymap.set(all_modes, 'K', 'Nzz', { remap = false, silent = true })
+    vim.keymap.set(all_modes, 'L', 'I', { remap = false, silent = true })
+
+    vim.keymap.set(all_modes, 'n', 'h', { remap = false, silent = true })
+    vim.keymap.set(all_modes, 'e', 'j', { remap = false, silent = true })
+    vim.keymap.set(all_modes, 'i', 'k', { remap = false, silent = true })
+    vim.keymap.set(all_modes, 'o', 'l', { remap = false, silent = true })
+    vim.keymap.set(all_modes, 'N', 'H', { remap = false, silent = true })
+    vim.keymap.set(all_modes, 'E', 'J', { remap = false, silent = true })
+    vim.keymap.set(all_modes, 'I', 'K', { remap = false, silent = true })
+    vim.keymap.set(all_modes, 'O', 'L', { remap = false, silent = true })
+
+    vim.keymap.set(modes, '<C-w>n', '<C-w>h')
+    vim.keymap.set(modes, '<C-w>e', '<C-w>j')
+    vim.keymap.set(modes, '<C-w>i', '<C-w>k')
+    vim.keymap.set(modes, '<C-w>o', '<C-w>l')
+    vim.keymap.set(modes, '<C-w>N', '<C-w>H')
+    vim.keymap.set(modes, '<C-w>E', '<C-w>J')
+    vim.keymap.set(modes, '<C-w>I', '<C-w>K')
+    vim.keymap.set(modes, '<C-w>O', '<C-w>L')
+
+    -- Ctrl combinations for pane navigation
+    vim.keymap.set(modes, '<C-w><C-n>', '<C-w>h')
+    vim.keymap.set(modes, '<C-w><C-e>', '<C-w>j')
+    vim.keymap.set(modes, '<C-w><C-i>', '<C-w>k')
+    vim.keymap.set(modes, '<C-w><C-o>', '<C-w>l')
+
+    -- Keep cursor; scroll one line
+    vim.keymap.set('n', '<C-e>', '<C-e>', { remap = false, silent = true })
+    vim.keymap.set('n', '<C-i>', '<C-y>', { remap = false, silent = true })
+
+    -- Keep cursor; scroll half screen
+    vim.keymap.set('n', '<C-u>', '<C-d>zz', { remap = false, silent = true })
+    vim.keymap.set('n', '<C-y>', '<C-u>zz', { remap = false, silent = true })
+
+    -- Jumping in locations and files
+    vim.keymap.set('n', '<C-b>', '<C-o>')
+    vim.keymap.set('n', '<C-k>', '<C-i>')
+    vim.keymap.set('n', '<C-o>', '<Nop>')
+    vim.keymap.set('n', '<C-O>', '<Nop>')
+
+end
