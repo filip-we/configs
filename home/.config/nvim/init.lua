@@ -40,11 +40,13 @@ require("oil").setup({
 })
 
 -- Make ag search hidden folders
-vim.env.FZF_DEFAULT_COMMAND = 'ag -u --hidden --ignore .git -g ""'
+vim.env.FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -g ""'
+
 vim.cmd([[
   command! -bang -nargs=* Ag
-    \ call fzf#vim#ag(<q-args>, '-u --hidden --ignore .git', fzf#vim#with_preview(), <bang>0)
+    \ call fzf#vim#ag(<q-args>, '--hidden --ignore .git', fzf#vim#with_preview(), <bang>0)
 ]])
+
 vim.keymap.set('n', '<leader>ag', function()
   vim.cmd('Ag ' .. vim.fn.expand('<cword>'))
 end, { desc = 'Ag search word under cursor' })
@@ -132,7 +134,6 @@ vim.opt.number = true
 vim.opt.relativenumber = true
 
 vim.opt.scrolloff = 8
-vim.opt.colorcolumn = "80"
 
 vim.opt.smarttab = true
 vim.opt.shiftwidth = 4
