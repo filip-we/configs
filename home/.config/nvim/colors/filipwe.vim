@@ -54,7 +54,7 @@ let palette = {
     \   'status-line':      'guifg=#5f80e3 ctermfg=66  guibg=#dadada ctermbg=253',
     \   'status-line-nc':   'guifg=#444444 ctermfg=238 guibg=#dadada ctermbg=253',
     \   'menu':             'guifg=#dadada ctermfg=253 guibg=#5f80e3 ctermbg=66',
-    \   'search':           'guifg=#000000 ctermfg=0   guibg=#0d0d0d ctermbg=252',
+    \   'search':           'guifg=#000000 ctermfg=0   guibg=#d7af5f ctermbg=179',
     \   'tab':              'guifg=#dadada ctermfg=253 guibg=#585858 ctermbg=240 term=None      cterm=None',
     \   'tab-sel':          'guifg=#dadada ctermfg=253 guibg=#8c8c77 ctermbg=144',
     \   'tab-nc':           'guifg=#585858 ctermfg=240 guibg=#585858 ctermbg=240 term=None      cterm=None',
