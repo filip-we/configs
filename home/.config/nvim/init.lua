@@ -249,9 +249,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
     local opts = { buffer = args.buf }
 
     vim.keymap.set("n", "<leader>rd", vim.lsp.buf.definition, opts)
-    vim.keymap.set("n", "<leader>rh", vim.lsp.buf.references, opts)
-    vim.keymap.set("i", "<leader>rc", vim.lsp.buf.signature_help, opts)
-    vim.keymap.set("n", "<leader>rg", vim.lsp.buf.hover, opts)
+    vim.keymap.set("n", "<leader>rr", vim.lsp.buf.references, opts)
+    vim.keymap.set("n", "<leader>rh", vim.lsp.buf.hover, opts)
     vim.keymap.set("n", "<leader>rm", vim.lsp.buf.rename, opts)
     vim.keymap.set({ "n", "v" }, "<leader>ra", vim.lsp.buf.code_action, opts)
     vim.keymap.set("n", "<leader>rf", function()
@@ -260,5 +259,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     vim.keymap.set("n", "<leader>ro", vim.diagnostic.goto_next, opts)
     vim.keymap.set("n", "<leader>rn", vim.diagnostic.goto_prev, opts)
     vim.keymap.set("n", "<leader>rv", vim.diagnostic.open_float, opts)
+
+    vim.keymap.set("i", "<leader>rc", vim.lsp.buf.signature_help, opts)
   end,
 })
