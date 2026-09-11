@@ -8,28 +8,28 @@ require("oil").setup({
   view_options = {
     show_hidden = true,
   },
+  preview_win = {
+    preview_split = "right",
+    split = "belowright",
+  },
   keymaps = {
-    ['<C-s>'] = {
-      'actions.select',
-      opts = {
-        vertical = true,
-        split = 'belowright',
-      },
+    ["<leader>v"] = {
+      "actions.select",
+      opts = { vertical = true, split = "belowright" },
     },
-    ['<C-h>'] = {
-      'actions.select',
-      opts = {
-        horizontal = true,
-        split = 'belowright',
-      },
+    ["<leader>V"] = {
+      "actions.select",
+      opts = { vertical = true, split = "aboveleft" },
     },
-    ['<C-p>'] = {
-      'actions.preview',
-      opts = {
-        vertical = true,
-        split = 'belowright',
-      },
+    ["<leader>h"] = {
+      "actions.select",
+      opts = { horizontal = true, split = "belowright" },
     },
+    ["<leader>H"] = {
+      "actions.select",
+      opts = { horizontal = true, split = "aboveleft" },
+    },
+    ["<C-p>"] = "actions.preview",
   },
 })
 
@@ -157,6 +157,8 @@ vim.keymap.set('t', '<Esc>', '<C-\\><C-n>')
 -- Disable spawning empty buffer
 vim.keymap.set({ 'n', 'x' }, '<C-w><C-n>', '<nop>')
 
+vim.keymap.set('n', '<leader>k', '<cmd>nohlsearch<CR>', { silent = true })
+
 -- Delete (motion or visual) to black hole
 vim.keymap.set(no_yank_modes, '<leader>d', '"_d', { desc = 'Delete without yanking' })
 vim.keymap.set(no_yank_modes, '<leader>D', '"_D', { desc = 'Delete line to end without yanking' })
@@ -170,6 +172,12 @@ vim.keymap.set(no_yank_modes, '<leader>p', '"+p', { desc = 'Paste from system cl
 vim.keymap.set(no_yank_modes, '<leader>P', '"+P', { desc = 'Paste from system clipboard' })
 vim.keymap.set(no_yank_modes, '<leader>y', '"+y', { desc = 'Yank directly to system clipboard' })
 vim.keymap.set(no_yank_modes, '<leader>Y', '"+Y', { desc = 'Yank directly to system clipboard' })
+
+-- Lazy pane splitting
+vim.keymap.set('n', '<leader>tn', '<cmd>leftabove vsplit<CR>', { silent = true })
+vim.keymap.set('n', '<leader>te', '<cmd>belowright split<CR>', { silent = true })
+vim.keymap.set('n', '<leader>ti', '<cmd>leftabove split<CR>', { silent = true })
+vim.keymap.set('n', '<leader>to', '<cmd>belowright vsplit<CR>', { silent = true })
 
 local keyboard_layout = vim.env.KEYBOARD_LAYOUT
 if not keyboard_layout or keyboard_layout == "" then
@@ -208,6 +216,15 @@ if keyboard_layout == 'colemak' then
     vim.keymap.set(modes, '<C-w>I', '<C-w>K')
     vim.keymap.set(modes, '<C-w>O', '<C-w>L')
 
+    vim.keymap.set(modes, '<leader>wn', '<C-w>h')
+    vim.keymap.set(modes, '<leader>we', '<C-w>j')
+    vim.keymap.set(modes, '<leader>wi', '<C-w>k')
+    vim.keymap.set(modes, '<leader>wo', '<C-w>l')
+    vim.keymap.set(modes, '<leader>wN', '<C-w>H')
+    vim.keymap.set(modes, '<leader>wE', '<C-w>J')
+    vim.keymap.set(modes, '<leader>wI', '<C-w>K')
+    vim.keymap.set(modes, '<leader>wO', '<C-w>L')
+
     -- Ctrl combinations for pane navigation
     vim.keymap.set(modes, '<C-w><C-n>', '<C-w>h')
     vim.keymap.set(modes, '<C-w><C-e>', '<C-w>j')
@@ -223,9 +240,25 @@ if keyboard_layout == 'colemak' then
     vim.keymap.set('n', '<C-y>', '<C-u>zz', { remap = false, silent = true })
 
     -- Jumping in locations and files
-    vim.keymap.set('n', '<C-b>', '<C-o>')
-    vim.keymap.set('n', '<C-k>', '<C-i>')
-    vim.keymap.set('n', '<C-o>', '<Nop>')
-    vim.keymap.set('n', '<C-O>', '<Nop>')
-
+    vim.keymap.set('n', '<leader>n', '<C-o>')
+    vim.keymap.set('n', '<leader>o', '<C-i>')
 end
+
+vim.api.nvim_create_autocmd("LspAttach", {
+  callback = function(args)
+    local opts = { buffer = args.buf }
+
+    vim.keymap.set("n", "<leader>rd", vim.lsp.buf.definition, opts)
+    vim.keymap.set("n", "<leader>rh", vim.lsp.buf.references, opts)
+    vim.keymap.set("i", "<leader>rc", vim.lsp.buf.signature_help, opts)
+    vim.keymap.set("n", "<leader>rg", vim.lsp.buf.hover, opts)
+    vim.keymap.set("n", "<leader>rm", vim.lsp.buf.rename, opts)
+    vim.keymap.set({ "n", "v" }, "<leader>ra", vim.lsp.buf.code_action, opts)
+    vim.keymap.set("n", "<leader>rf", function()
+      vim.lsp.buf.format({ async = false })
+    end, opts)
+    vim.keymap.set("n", "<leader>ro", vim.diagnostic.goto_next, opts)
+    vim.keymap.set("n", "<leader>rn", vim.diagnostic.goto_prev, opts)
+    vim.keymap.set("n", "<leader>rv", vim.diagnostic.open_float, opts)
+  end,
+})
