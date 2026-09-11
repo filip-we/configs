@@ -1,4 +1,4 @@
-"Updated 2022-08-05
+"Updated 2026-09-11
 hi clear
 if exists("syntax_on")
   syntax reset
@@ -6,7 +6,6 @@ endif
 
 let g:colors_name = "filipwe"
 
-" Light colors
 if &background == 'light'
     " ---------------------------------------------------------------------------------------------------------
     " ---------------------------------------------- Light Colors ---------------------------------------------
@@ -20,7 +19,8 @@ let palette = {
     \   'status-line':      'guifg=#5f80e3 ctermfg=32  guibg=#eeeeee ctermbg=255',
     \   'status-line-nc':   'guifg=#444444 ctermfg=238 guibg=#eeeeee ctermbg=255',
     \   'menu':             'guifg=#dadada ctermfg=253 guibg=#5f80e3 ctermbg=32',
-    \   'search':           'guifg=#ffffff ctermfg=255 guibg=#999999 ctermbg=244',
+    \   'search':           'guifg=#dadada ctermfg=253 guibg=#af5f00 ctermbg=136',
+    \   'cur-search':       '                          guibg=#522D00 ctermbg=94',
     \   'tab':              'guifg=#000000 ctermfg=0   guibg=#999999 ctermbg=244 term=None cterm=None',
     \   'tab-sel':          'guifg=#000000 ctermfg=0                             term=None cterm=None',
     \   'tab-nc':           'guifg=#999999 ctermfg=244',
@@ -55,6 +55,7 @@ let palette = {
     \   'status-line-nc':   'guifg=#444444 ctermfg=238 guibg=#dadada ctermbg=253',
     \   'menu':             'guifg=#dadada ctermfg=253 guibg=#5f80e3 ctermbg=66',
     \   'search':           'guifg=#000000 ctermfg=0   guibg=#d7af5f ctermbg=179',
+    \   'cur-search':       'guifg=#000000 ctermfg=0   guibg=#ffffcc ctermbg=230',
     \   'tab':              'guifg=#dadada ctermfg=253 guibg=#585858 ctermbg=240 term=None      cterm=None',
     \   'tab-sel':          'guifg=#dadada ctermfg=253 guibg=#8c8c77 ctermbg=144',
     \   'tab-nc':           'guifg=#585858 ctermfg=240 guibg=#585858 ctermbg=240 term=None      cterm=None',
@@ -88,6 +89,7 @@ exec 'hi Directory      '.palette['gui-fg-1']
 exec 'hi Pmenu          '.palette['menu']
 
 exec 'hi Search         '.palette['search']
+exec 'hi CurSearch      '.palette['cur-search']
 exec 'hi Visual         '.palette['gui-bg-1']
 exec 'hi StatusLine     '.palette['status-line']
 exec 'hi StatusLineNC   '.palette['status-line-nc']
