@@ -33,6 +33,17 @@ require("oil").setup({
   },
 })
 
+vim.lsp.enable("ruff")
+require("mason").setup()
+require("mason-lspconfig").setup({
+  ensure_installed = { "ruff" },
+  handlers = {
+    function(server_name)
+      vim.lsp.enable(server_name)
+    end,
+  },
+})
+
 -- Make ag search hidden folders
 vim.env.FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -g ""'
 

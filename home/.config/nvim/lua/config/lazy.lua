@@ -29,11 +29,13 @@ plugin_list = {
   "junegunn/fzf.vim",
   "stevearc/oil.nvim",
   {"mason-org/mason.nvim", opts = {}},
+  "williamboman/mason-lspconfig.nvim",
+  "neovim/nvim-lspconfig",
 }
 
 -- Setup lazy.nvim
 require("lazy").setup({
   spec = plugin_list,
-  install = { colorscheme = { "habamax" } },
+  install = { colorscheme = { "filipwe" } },
   checker = { enabled = true },
 })
