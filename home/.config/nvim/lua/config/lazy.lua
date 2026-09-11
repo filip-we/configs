@@ -21,38 +21,19 @@ vim.opt.rtp:prepend(lazypath)
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
-local operating_system = vim.fn.system("uname")
-
-if operating_system:match("Darwin") then
-  plugin_list = {
-    "vim-airline/vim-airline",
-    "vim-airline/vim-airline-themes",
-    "christoomey/vim-tmux-navigator",
-    "junegunn/fzf",
-    "junegunn/fzf.vim",
-    "stevearc/oil.nvim",
-    "hashivim/vim-terraform",
-    "github/copilot.vim",
-    "nvim-lua/plenary.nvim",
-    "CopilotC-Nvim/CopilotChat.nvim",
-  }
-else
-  plugin_list = {
-    "vim-airline/vim-airline",
-    "vim-airline/vim-airline-themes",
-    "christoomey/vim-tmux-navigator",
-    "junegunn/fzf",
-    "junegunn/fzf.vim",
-    "stevearc/oil.nvim",
-  }
-end
+plugin_list = {
+  "vim-airline/vim-airline",
+  "vim-airline/vim-airline-themes",
+  "christoomey/vim-tmux-navigator",
+  "junegunn/fzf",
+  "junegunn/fzf.vim",
+  "stevearc/oil.nvim",
+  {"mason-org/mason.nvim", opts = {}},
+}
 
 -- Setup lazy.nvim
 require("lazy").setup({
   spec = plugin_list,
-  -- Configure any other settings here. See the documentation for more details.
-  -- colorscheme that will be used when installing plugins.
   install = { colorscheme = { "habamax" } },
-  -- automatically check for plugin updates
   checker = { enabled = true },
 })

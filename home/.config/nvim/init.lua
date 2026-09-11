@@ -1,11 +1,5 @@
 require("config.lazy")
 
-local operating_system = vim.fn.system("uname")
-
-if operating_system:match("Darwin") then
-  require("CopilotChat").setup {}
-end
-
 require("oil").setup({
    columns = {
     "size",
