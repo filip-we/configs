@@ -9,7 +9,6 @@ export KEYBOARD_LAYOUT="colemak"
 
 # ZSH
 export ZSH_THEME="filipwe"
-# export ZSH="$HOME/.config/zsh/ohmyzsh"
-export ZSH="$HOME/.oh-my-zsh"
+export ZSH="$HOME/.config/zsh/ohmyzsh"
 
-PATH=$PATH:~/bin
+export PATH="$PATH:~/.local/bin"
