@@ -260,6 +260,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
     vim.keymap.set("n", "<leader>rn", vim.diagnostic.goto_prev, opts)
     vim.keymap.set("n", "<leader>rv", vim.diagnostic.open_float, opts)
 
-    vim.keymap.set("i", "<leader>rc", vim.lsp.buf.signature_help, opts)
+    vim.keymap.set("n", "<leader>rs", vim.lsp.buf.signature_help, opts)
   end,
 })
