@@ -14,7 +14,7 @@ if &background == 'light'
 let palette = {
     \   'cursor':           'guifg=#278001 ctermfg=34  guibg=#f558be ctermbg=165',
     \   'gui-fg-1':         'guifg=#5f80e3 ctermfg=32',
-    \   'gui-bg-1':         '                          guibg=#5f80e3 ctermbg=32',
+    \   'gui-bg-1':         '                          guibg=#ffffd7 ctermbg=230',
     \
     \   'status-line':      'guifg=#5f80e3 ctermfg=32  guibg=#eeeeee ctermbg=255',
     \   'status-line-nc':   'guifg=#444444 ctermfg=238 guibg=#eeeeee ctermbg=255',
