@@ -24,6 +24,7 @@ let palette = {
     \   'tab':              'guifg=#000000 ctermfg=0   guibg=#999999 ctermbg=244 term=None cterm=None',
     \   'tab-sel':          'guifg=#000000 ctermfg=0                             term=None cterm=None',
     \   'tab-nc':           'guifg=#999999 ctermfg=244',
+    \   'normal-float':     '                          guibg=#ffffff ctermbg=255',
     \
     \   'todo':             'guifg=#eeeeee ctermfg=255 guibg=#278001 ctermbg=34',
     \   'non-text':         'guifg=#0000d7 ctermfg=20',
@@ -59,6 +60,7 @@ let palette = {
     \   'tab':              'guifg=#dadada ctermfg=253 guibg=#585858 ctermbg=240 term=None      cterm=None',
     \   'tab-sel':          'guifg=#dadada ctermfg=253 guibg=#8c8c77 ctermbg=144',
     \   'tab-nc':           'guifg=#585858 ctermfg=240 guibg=#585858 ctermbg=240 term=None      cterm=None',
+    \   'normal-float':     'guifg=#585858 ctermfg=240 guibg=#585858 ctermbg=240 term=None      cterm=None',
     \
     \   'todo':             'guifg=#999999 ctermfg=238 guibg=#87af00 ctermbg=106',
     \   'non-text':         'guifg=#5f8787 ctermfg=66',
@@ -87,6 +89,8 @@ exec 'hi TermCursorNC   '.palette['cursor']
 
 exec 'hi Directory      '.palette['gui-fg-1']
 exec 'hi Pmenu          '.palette['menu']
+
+exec 'hi NormalFloat    '.palette['normal-float']
 
 exec 'hi Search         '.palette['search']
 exec 'hi CurSearch      '.palette['cur-search']
