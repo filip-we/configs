@@ -50,7 +50,7 @@ el
 let palette = {
     \   'cursor':           'guifg=#278001 ctermfg=34  guibg=#f558be ctermbg=165',
     \   'gui-fg-1':         'guifg=#005f5f ctermfg=23',
-    \   'gui-bg-1':         '                          guibg=#005f5f ctermbg=23',
+    \   'gui-bg-1':         '                          guibg=#454500 ctermbg=58',
     \
     \   'status-line':      'guifg=#5f80e3 ctermfg=66  guibg=#dadada ctermbg=253',
     \   'status-line-nc':   'guifg=#444444 ctermfg=238 guibg=#dadada ctermbg=253',
@@ -60,7 +60,7 @@ let palette = {
     \   'tab':              'guifg=#dadada ctermfg=253 guibg=#585858 ctermbg=240 term=None      cterm=None',
     \   'tab-sel':          'guifg=#dadada ctermfg=253 guibg=#8c8c77 ctermbg=144',
     \   'tab-nc':           'guifg=#585858 ctermfg=240 guibg=#585858 ctermbg=240 term=None      cterm=None',
-    \   'normal-float':     'guifg=#585858 ctermfg=240 guibg=#585858 ctermbg=240 term=None      cterm=None',
+    \   'normal-float':     '                          guibg=#585858 ctermbg=240 term=None      cterm=None',
     \
     \   'todo':             'guifg=#999999 ctermfg=238 guibg=#87af00 ctermbg=106',
     \   'non-text':         'guifg=#5f8787 ctermfg=66',
