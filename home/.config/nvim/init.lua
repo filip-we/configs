@@ -241,8 +241,8 @@ if keyboard_layout == 'colemak' then
     vim.keymap.set('n', '<C-y>', '<C-u>zz', { remap = false, silent = true })
 
     -- Jumping in locations and files
-    vim.keymap.set('n', '<leader>n', '<C-o>')
-    vim.keymap.set('n', '<leader>o', '<C-i>')
+    vim.keymap.set('n', '<C-n>', '<C-i>', { remap = false, silent = true })
+    vim.keymap.set('n', '<C-o>', '<C-o>', { remap = false, silent = true })
 end
 
 vim.api.nvim_create_autocmd("LspAttach", {
